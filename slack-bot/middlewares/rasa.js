@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 let rasaUri = 'http://localhost:5005'
-let minConfidence = 0.6
+let defaultMinConfidence = 0.6
 
 const rasaMiddleware = (config) => {
     
@@ -12,7 +12,7 @@ const rasaMiddleware = (config) => {
         }
 
         if (!config.minConfidence) {
-            minConfidence = config.minConfidence
+            defaultMinConfidence = config.minConfidence
         }
 
     }
@@ -39,12 +39,8 @@ const rasaMiddleware = (config) => {
             // append rasa response
             .then((r) => {
 
-                const confidence = r.data.intent.confidence
-                
-                if (confidence >= minConfidence) {
-                    message.intent = r.data.intent
-                    message.entities = r.data.entities    
-                }
+                message.intent = r.data.intent
+                message.entities = r.data.entities    
 
             })
             // on error
@@ -69,10 +65,13 @@ const rasaMiddleware = (config) => {
 
 }
 
-const intent = (intents) => async (message) => {
+const intent = (intents, minConfidence = defaultMinConfidence) => async (message) => {
     
     // bypass if not intent
     if (!message.intent || !message.intent.name) return false
+
+    // bypass if confidence too low
+    if (message.intent.confidence < minConfidence) return false
 
     // matching function
     const match = (e) => message.intent.name === e
