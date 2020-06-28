@@ -10,6 +10,10 @@ const { Botkit } = require('botkit')
 // Import a platform-specific adapter for slack.
 const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack')
 
+// Import Rasa middleware
+const { rasaMiddleware } = require('./middlewares/rasa')
+
+// Import mongo storage
 const { MongoDbStorage } = require('botbuilder-storage-mongodb')
 
 // Load process.env values from .env file
@@ -47,6 +51,9 @@ const controller = new Botkit({
     adapter: adapter,
     storage
 })
+
+// Use Rasa middleware
+controller.middleware.receive.use(rasaMiddleware().receive)
 
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
