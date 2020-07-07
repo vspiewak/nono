@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 }
 */
 
-
+// Create SlackAdapter
 const adapter = new SlackAdapter({
     
     // parameters used to secure webhook endpoint
@@ -63,20 +63,13 @@ controller.ready(() => {
 
 })
 
-// 
-controller.webserver.get('/', (req, res) => {
-
-    res.send(`This app is running Botkit ${ controller.version }.`)
-
-})
-
 // Serve assets folder
 controller.publicFolder('/assets', __dirname + '/assets')
 
-
-// Health Check
-controller.webserver.get('/health', (req, res) => {
-
+// Health Check on GET / & GET /health
+const health = (req, res) => {
     res.json({ status: 'UP', version: controller.version })
+}
 
-})
+controller.webserver.get('/', health)
+controller.webserver.get('/health', health)
