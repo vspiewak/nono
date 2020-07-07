@@ -7,7 +7,11 @@ const {
     entitiesDatePeriod 
 } = require('./nlu')
 
-const { rasa } = require('./rasa')
+const { 
+    rasaStatus,
+    rasaVersion,
+    rasaParse
+ } = require('./rasa')
 
 const { 
     sendToSlack, 
@@ -21,7 +25,9 @@ module.exports = {
     containEntity, 
     entitiesOf, 
     entitiesDatePeriod,
-    rasa,
+    rasaStatus,
+    rasaVersion,
+    rasaParse,
     sendToSlack,
     replyToSlack
 }

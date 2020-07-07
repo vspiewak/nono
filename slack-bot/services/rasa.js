@@ -1,9 +1,31 @@
 const axios = require('axios')
 
-const rasa = async (msg) => {
+const rasaURL = 'http://localhost:5005'
+
+const rasaStatus = async (msg) => {
     
     return axios({
-        baseURL: 'http://localhost:5005',
+        baseURL: rasaURL,
+        method: 'get',
+        url: '/status'
+    })
+
+}
+
+const rasaVersion = async (msg) => {
+    
+    return axios({
+        baseURL: rasaURL,
+        method: 'get',
+        url: '/version'
+    })
+
+}
+
+const rasaParse = async (msg) => {
+    
+    return axios({
+        baseURL: rasaURL,
         url: '/model/parse',
         method: 'post',
         data: {
@@ -14,5 +36,7 @@ const rasa = async (msg) => {
 }
 
 module.exports = {
-    rasa
+    rasaStatus,
+    rasaVersion,
+    rasaParse
 }
