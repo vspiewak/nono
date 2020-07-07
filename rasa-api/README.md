@@ -13,7 +13,7 @@
     docker run -p 8000:8000 rasa/duckling
 
     # run rasa server
-    docker run -u 1000 -v $(pwd):/app -p 5005:5005 nono-rasa-api run --enable-api -m models
+    docker run -u 1000 -v $(pwd):/app --net='host' nono-rasa-api run --enable-api -m models --debug
 
     # sample request
     curl localhost:5005/model/parse -d '{"text":"Hi !"}' | jq

@@ -1,56 +1,71 @@
 ## intent:greet
+- hi
 - hey
 - hello
-- hi
-- good morning
-- good evening
-- hey there
+- hola
+- salut
+- bonjour
+- bonsoir
+- coucou
+- yo
+- yop
 
 ## intent:goodbye
 - bye
-- goodbye
-- see you around
-- see you later
+- au revoir
+- a demain
+- a plus
+- a+
 
 ## intent:affirm
 - yes
-- indeed
-- of course
-- that sounds good
+- oui
+- biensur
 - correct
+- exact
 
 ## intent:deny
 - no
-- never
-- I don't think so
-- don't like that
-- no way
-- not really
+- non
+- jamais
+- je ne pense pas
+- je n'aime pas
+- pas vraiment
 
 ## intent:mood_great
-- perfect
-- very good
-- great
-- amazing
-- wonderful
-- I am feeling very good
-- I am great
-- I'm good
+- parfais
+- cool
+- génial
+- énorme
 
 ## intent:mood_unhappy
-- sad
-- very sad
-- unhappy
-- bad
-- very bad
-- awful
-- terrible
-- not very good
-- extremely sad
-- so sad
+- triste
+- très triste
+- bof
+- mal
+- pas tres bien
 
 ## intent:bot_challenge
-- are you a bot?
-- are you a human?
-- am I talking to a bot?
-- am I talking to a human?
+- qui es tu ?
+- es-tu un bot ?
+- es-tu un humain ?
+- je parle à un bot ?
+- je parle à un humain ?
+
+## intent:bot_situation
+- c'est une bonne situation ?
+- c'est une bonne situation, ça, bot ?
+- tu aimes ta situation de bot ?
+- tu aimes ta situation ?
+- quelle esr ta situtation ?
+- parle moi de ta situation
+
+## intent:usage
+- a quoi tu sers ?
+- que sais tu ?
+- que sait tu ?
+- que sais tu faire ?
+- aide
+- info
+- help
+- usage
