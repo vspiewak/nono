@@ -63,12 +63,18 @@ controller.ready(() => {
 
 })
 
+// 
 controller.webserver.get('/', (req, res) => {
 
     res.send(`This app is running Botkit ${ controller.version }.`)
 
 })
 
+// Serve assets folder
+controller.publicFolder('/assets', __dirname + '/assets')
+
+
+// Health Check
 controller.webserver.get('/health', (req, res) => {
 
     res.json({ status: 'UP', version: controller.version })
