@@ -21,8 +21,10 @@ const rasaMiddleware = (config) => {
 
         receive: (bot, message, next) => {
             
-            // bypass empty or echo message
-            if (!message.text || message.is_echo) {
+            console.log(message.type, message.text)
+            
+            // bypass empty or bot messages
+            if (!message.text || message.is_echo || message.type === 'bot_message') {
                 next()
                 return
             }
@@ -39,14 +41,16 @@ const rasaMiddleware = (config) => {
             // append rasa response
             .then((r) => {
 
+                console.log(r.data.intent)
+
                 message.intent = r.data.intent
-                message.entities = r.data.entities    
+                message.entities = r.data.entities  
 
             })
             // on error
             .catch((err) => {
             
-                console.log('rasa error', err.message)
+                console.log('rasa error', err)
             
             })
             // finally
