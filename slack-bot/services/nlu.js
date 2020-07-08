@@ -1,6 +1,8 @@
 const parseJSON = require('date-fns/parseJSON')
 const startOfDay = require('date-fns/startOfDay')
 const endOfDay = require('date-fns/endOfDay')
+const startOfMonth = require('date-fns/startOfMonth')
+const endOfToday = require('date-fns/endOfToday')
 const endOfMonth = require('date-fns/endOfMonth')
 const endOfYear = require('date-fns/endOfYear')
 const subSeconds = require('date-fns/subSeconds')
@@ -95,8 +97,8 @@ const entitiesDatePeriod = (message) => {
 
         const durationEntity = entitiesOf('duration')(message)[0]
         const sinceSeconds = durationEntity.additional_info.normalized.value
-        const startDate = startOfDay(subSeconds(new Date(), sinceSeconds))
-        const endDate = endOfDay(new Date())
+        const startDate = startOfMonth(subSeconds(new Date(), sinceSeconds))
+        const endDate = endOfToday()
         return [startDate, endDate]
     
     } else {
