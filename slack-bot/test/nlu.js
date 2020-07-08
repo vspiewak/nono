@@ -209,7 +209,7 @@ describe("NLU service", () => {
 
   })
 
-  it('du 1 janvier 2020 à aujourdhui', () => {
+  it('should parse du 1 janvier 2020 à aujourdhui', () => {
   
     const message = JSON.parse(duXauY)
     const dates = entitiesDatePeriod(message)
