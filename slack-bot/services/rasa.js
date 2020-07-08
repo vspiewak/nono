@@ -12,7 +12,7 @@ const rasaStatus = async (msg) => {
 
 }
 
-const rasaVersion = async (msg) => {
+const rasaVersion = async () => {
     
     return axios({
         baseURL: rasaURL,
@@ -22,7 +22,7 @@ const rasaVersion = async (msg) => {
 
 }
 
-const rasaParse = async (msg) => {
+const rasaParse = async () => {
     
     return axios({
         baseURL: rasaURL,
